@@ -143,5 +143,6 @@ export default {
     },
   },
 
-  serverMiddleware: isLocalStart || !isProd ? ['~/api/hello.ts'] : [],
+  serverMiddleware:
+    isLocalStart || !isProd ? ['~/api/contents/[id].ts', '~/api/hello.ts'] : [],
 }

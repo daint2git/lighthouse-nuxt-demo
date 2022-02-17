@@ -2,6 +2,7 @@
   <div class="min-h-screen max-w-4xl mx-auto sm:px-6 lg:px-8">
     <Tutorial />
     <p class="text-lg">{{ helloMessage }}</p>
+    <pre class="text-lg">{{ dynamicMessage }}</pre>
     <div>
       <h1 class="text-xl">nuxtjs posts</h1>
       <ul>
@@ -41,7 +42,17 @@ export default Vue.extend({
         description: string
       }[],
       helloMessage: '',
+      dynamicMessage: '',
     }
+  },
+  mounted() {
+    this.fetchDynamicMessage()
+  },
+  methods: {
+    async fetchDynamicMessage() {
+      const data = await this.$axios.$get('api/contents?id=123')
+      this.dynamicMessage = JSON.stringify(data, null, 2)
+    },
   },
 })
 </script>
