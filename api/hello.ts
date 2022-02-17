@@ -7,7 +7,4 @@ app.get('/', function (_, res) {
   res.status(200).json({ message: 'This is hello message' })
 })
 
-export default {
-  path: '/api/hello',
-  handler: app,
-}
+export default app
