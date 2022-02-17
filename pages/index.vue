@@ -1,6 +1,7 @@
 <template>
   <div class="min-h-screen max-w-4xl mx-auto sm:px-6 lg:px-8">
     <Tutorial />
+    <p class="text-lg">{{ helloMessage }}</p>
     <div>
       <h1 class="text-xl">nuxtjs posts</h1>
       <ul>
@@ -22,9 +23,16 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'IndexPage',
-  asyncData: async ({ $axios }) => {
+  asyncData: async (context) => {
+    const { $axios } = context
+
     const posts = await $axios.$get('https://api.nuxtjs.dev/posts')
-    return { posts }
+    const hello = await $axios.$get('/api/hello')
+
+    return {
+      posts,
+      helloMessage: hello.message,
+    }
   },
   data() {
     return {
@@ -32,6 +40,7 @@ export default Vue.extend({
         title: string
         description: string
       }[],
+      helloMessage: '',
     }
   },
 })

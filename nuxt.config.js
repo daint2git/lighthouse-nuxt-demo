@@ -3,6 +3,8 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 const isProd = process.env.NODE_ENV === 'production'
 const browserslist = ['> 0.5%', 'not dead', 'not ie 11', 'not op_mini all']
 const fontFamilies = ['Roboto', ...defaultTheme.fontFamily.sans]
+const baseURL = process.env.BASE_URL ?? 'http://localhost:3000'
+const isLocalStart = process.env.IS_LOCAL_START === 'true'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -134,4 +136,12 @@ export default {
       },
     },
   },
+
+  privateRuntimeConfig: {
+    axios: {
+      baseURL,
+    },
+  },
+
+  serverMiddleware: isLocalStart || !isProd ? ['~/api/hello.ts'] : [],
 }
