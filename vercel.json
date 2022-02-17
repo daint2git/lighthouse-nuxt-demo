@@ -9,14 +9,14 @@
       }
     },
     {
-      "src": "api/**/*.ts",
+      "src": "api/hello.ts",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/hello",
-      "dest": "/api/hello.ts"
+      "dest": "api/hello.ts"
     }
   ]
 }
