@@ -15,12 +15,12 @@
   ],
   "routes": [
     {
-      "src": "/api/contents/(?<id>[^/]+)",
-      "dest": "api/contents/[id].ts?id=$id"
+      "src": "/api/contents/(?<id>[^/]*)",
+      "dest": "/api/contents/[id].ts?id=$id"
     },
     {
       "src": "/api/(.*)",
-      "dest": "api/$1.ts"
+      "dest": "/api/$1.ts"
     }
   ]
 }
