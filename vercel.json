@@ -16,8 +16,7 @@
   "routes": [
     {
       "src": "/api/hello",
-      "dest": "/api/hello.ts",
-      "methods": ["GET", "OPTIONS"]
+      "dest": "/api/hello.ts"
     }
   ]
 }
