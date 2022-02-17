@@ -4,7 +4,9 @@
     {
       "src": "nuxt.config.js",
       "use": "@nuxtjs/vercel-builder",
-      "config": {}
+      "config": {
+        "serverFiles": ["api/**"]
+      }
     },
     {
       "src": "api/**/*.ts",
@@ -13,8 +15,8 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.ts",
+      "src": "/api/hello",
+      "dest": "/api/hello.ts",
       "methods": ["GET", "OPTIONS"]
     }
   ]
